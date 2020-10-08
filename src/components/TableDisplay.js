@@ -2,18 +2,12 @@ import React from 'react'
 
 const TableDisplay = (props) => {
 
-  // Generic helper function that can be used for the three operations:        
   const filter = (list1, list2, isUnion = true) =>
     list1.filter(
       (set => a => isUnion === set.has(a.name))(new Set(list2.map(b => b.name)))
     );
 
-  // Following functions are to be used:
-  // const inBoth = (list1, list2) => operation(list1, list2, true)
-
   const array = filter(props.filterState, props.filterGenre)
-  console.log(array)
-
 
   array.sort((a, b) => {
     let nameA = a.name.toUpperCase()
