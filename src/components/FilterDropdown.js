@@ -2,33 +2,36 @@ import React from 'react'
 
 const FilterDropdown = (props) => {
   // get all unique states
-  const stateObj = {}
+  const obj = {}
+
   if (props.type === 'state') {
     props.restaurants.forEach(restaurant => {
-      if (stateObj.hasOwnProperty(restaurant.state)) {
-        stateObj[restaurant.state].push(restaurant)
+      if (obj[restaurant.state]) {
+        obj[restaurant.state].push(restaurant)
       }
       else {
-        stateObj[restaurant.state] = [restaurant]
+        obj[restaurant.state] = [restaurant]
       }
     })
   }
   else {
     props.restaurants.forEach(restaurant => {
-      if (stateObj.hasOwnProperty(restaurant.genre)) {
-        stateObj[restaurant.genre].push(restaurant)
+      const splitArr = restaurant.genre.split(',')
+      for (let genre of splitArr) {
+        if (obj[genre]) {
+          obj[genre].push(restaurant)
+        }
+        else {
+          obj[genre] = [restaurant]
+        }
       }
-      else {
-        stateObj[restaurant.genre] = [restaurant]
-      }
+
     })
   }
 
+  const options = Object.keys(obj)
 
-
-  const states = Object.keys(stateObj)
-
-  states.sort((a, b) => {
+  options.sort((a, b) => {
     if (a < b) {
       return -1
     }
@@ -38,16 +41,16 @@ const FilterDropdown = (props) => {
     return 0
   })
 
-  const renderStates = states.map((state, idx) => {
+  const renderOptions = options.map((option, idx) => {
     return (
-      <option value={state}>{state}</option>
+      <option key={`${props.type}-${idx}`} value={option}>{option}</option>
     )
   })
 
   return (
     <select className="FilterDropdown">
       <option value="all">All</option>
-      {renderStates}
+      {renderOptions}
     </select>
   )
 }

@@ -6,9 +6,10 @@ import TableDisplay from './components/TableDisplay'
 import FilterDropdown from './components/FilterDropdown'
 
 const App = () => {
-
   const [restaurants, setRestaurants] = useState([])
   const [displayRestaurants, setDisplayRestaurants] = useState([])
+  const [filterState, setFilterState] = useState('all')
+  const [filterGenre, setFilterGenre] = useState('all')
 
   useEffect(() => {
     fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
@@ -26,7 +27,8 @@ const App = () => {
   return (
     <div className="App">
       <div className="App-div">
-        <FilterDropdown type="state" restaurants={restaurants} setDisplayRestaurants={setDisplayRestaurants} />
+        <FilterDropdown type="state" restaurants={restaurants} setDisplayRestaurants={setDisplayRestaurants} setFilterState={setFilterState} />
+        <FilterDropdown type="genre" restaurants={restaurants} setDisplayRestaurants={setDisplayRestaurants} setFilterGenre={setFilterGenre} />
         <TableDisplay restaurants={displayRestaurants} />
       </div>
     </div>
