@@ -11,6 +11,9 @@ const App = () => {
   const [filterState, setFilterState] = useState('all')
   const [filterGenre, setFilterGenre] = useState('all')
 
+  console.log(filterState)
+  console.log(filterGenre)
+
   useEffect(() => {
     fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
       headers: {

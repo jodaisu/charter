@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const FilterDropdown = (props) => {
-  // get all unique states
+  const onChangeFilter = props.type === 'state' ? props.setFilterState : props.setFilterGenre
+
   const obj = {}
 
   if (props.type === 'state') {
@@ -48,7 +49,7 @@ const FilterDropdown = (props) => {
   })
 
   return (
-    <select className="FilterDropdown">
+    <select className="FilterDropdown" onChange={e => onChangeFilter(e.currentTarget.value)}>
       <option value="all">All</option>
       {renderOptions}
     </select>
