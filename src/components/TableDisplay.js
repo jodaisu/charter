@@ -1,8 +1,21 @@
 import React from 'react'
 
 const TableDisplay = (props) => {
-  // sort restaurants alphabetically by name
-  props.restaurants.sort((a, b) => {
+
+  // Generic helper function that can be used for the three operations:        
+  const filter = (list1, list2, isUnion = true) =>
+    list1.filter(
+      (set => a => isUnion === set.has(a.name))(new Set(list2.map(b => b.name)))
+    );
+
+  // Following functions are to be used:
+  // const inBoth = (list1, list2) => operation(list1, list2, true)
+
+  const array = filter(props.filterState, props.filterGenre)
+  console.log(array)
+
+
+  array.sort((a, b) => {
     let nameA = a.name.toUpperCase()
     let nameB = b.name.toUpperCase()
     if (nameA < nameB) {
@@ -16,7 +29,7 @@ const TableDisplay = (props) => {
 
   const restaurantRows = []
 
-  props.restaurants.forEach((restaurant, i) => {
+  array.forEach((restaurant, i) => {
     restaurantRows.push(
       <tr key={`row${i}`}>
         <td>{restaurant.name}</td>

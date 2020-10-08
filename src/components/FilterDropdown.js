@@ -7,11 +7,10 @@ const FilterDropdown = (props) => {
 
   const handleOption = (e) => {
     if (e.currentTarget.value === 'all') {
-      props.setDisplayRestaurants(props.restaurants)
+      onChangeFilter(props.restaurants)
     }
     else {
-      onChangeFilter(e.currentTarget.value)
-      props.setDisplayRestaurants(obj[e.currentTarget.value])
+      onChangeFilter(obj[e.currentTarget.value])
     }
   }
 

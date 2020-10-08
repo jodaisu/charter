@@ -8,8 +8,8 @@ import FilterDropdown from './components/FilterDropdown'
 const App = () => {
   const [restaurants, setRestaurants] = useState([])
   const [displayRestaurants, setDisplayRestaurants] = useState([])
-  const [filterState, setFilterState] = useState('all')
-  const [filterGenre, setFilterGenre] = useState('all')
+  const [filterState, setFilterState] = useState([])
+  const [filterGenre, setFilterGenre] = useState([])
 
   useEffect(() => {
     fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
@@ -21,12 +21,14 @@ const App = () => {
       .then(result => {
         setRestaurants(result)
         setDisplayRestaurants(result)
+        setFilterState(result)
+        setFilterGenre(result)
       })
   }, [])
 
   const filterType = ['state', 'genre']
 
-  const dropDownRender = filterType.map((type, idx) => {
+  const dropdownRender = filterType.map((type, idx) => {
     return (
       <FilterDropdown
         key={`${type}-${idx}`}
@@ -42,8 +44,12 @@ const App = () => {
   return (
     <div className="App">
       <div className="App-div">
-        {dropDownRender}
-        <TableDisplay restaurants={displayRestaurants} />
+        {dropdownRender}
+        <TableDisplay
+          restaurants={displayRestaurants}
+          filterState={filterState}
+          filterGenre={filterGenre}
+        />
       </div>
     </div>
   );
