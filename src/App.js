@@ -6,6 +6,7 @@ import TableDisplay from './containers/TableDisplay'
 const App = () => {
 
   const [allRestaurants, setAllRestaurants] = useState([])
+  const [displayRestaurants, setDisplayRestaurants] = useState([])
 
   useEffect(() => {
     fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
@@ -16,13 +17,14 @@ const App = () => {
       .then(data => data.json())
       .then(result => {
         setAllRestaurants(result)
+        setDisplayRestaurants(result)
       })
   }, [])
 
   return (
     <div className="App">
       <div className="App-div">
-        <TableDisplay restaurants={allRestaurants} />
+        <TableDisplay restaurants={displayRestaurants} />
       </div>
     </div>
   );
