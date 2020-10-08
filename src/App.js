@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
-import TableDisplay from './containers/TableDisplay'
+import TableDisplay from './components/TableDisplay'
 
 const App = () => {
 
@@ -24,7 +24,8 @@ const App = () => {
   return (
     <div className="App">
       <div className="App-div">
-        <TableDisplay restaurants={displayRestaurants} />
+        <FilterBy
+          <TableDisplay restaurants={displayRestaurants} />
       </div>
     </div>
   );
