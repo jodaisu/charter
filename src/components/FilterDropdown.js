@@ -1,9 +1,19 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const FilterDropdown = (props) => {
   const onChangeFilter = props.type === 'state' ? props.setFilterState : props.setFilterGenre
 
   const obj = {}
+
+  const handleOption = (e) => {
+    if (e.currentTarget.value === 'all') {
+      props.setDisplayRestaurants(props.restaurants)
+    }
+    else {
+      onChangeFilter(e.currentTarget.value)
+      props.setDisplayRestaurants(obj[e.currentTarget.value])
+    }
+  }
 
   if (props.type === 'state') {
     props.restaurants.forEach(restaurant => {
@@ -26,7 +36,6 @@ const FilterDropdown = (props) => {
           obj[genre] = [restaurant]
         }
       }
-
     })
   }
 
@@ -49,7 +58,7 @@ const FilterDropdown = (props) => {
   })
 
   return (
-    <select className="FilterDropdown" onChange={e => onChangeFilter(e.currentTarget.value)}>
+    <select className="FilterDropdown" onChange={handleOption}>
       <option value="all">All</option>
       {renderOptions}
     </select>

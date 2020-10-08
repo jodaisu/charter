@@ -11,9 +11,6 @@ const App = () => {
   const [filterState, setFilterState] = useState('all')
   const [filterGenre, setFilterGenre] = useState('all')
 
-  console.log(filterState)
-  console.log(filterGenre)
-
   useEffect(() => {
     fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
       headers: {
@@ -27,11 +24,25 @@ const App = () => {
       })
   }, [])
 
+  const filterType = ['state', 'genre']
+
+  const dropDownRender = filterType.map((type, idx) => {
+    return (
+      <FilterDropdown
+        key={`${type}-${idx}`}
+        type={type}
+        restaurants={restaurants}
+        setDisplayRestaurants={setDisplayRestaurants}
+        setFilterState={setFilterState}
+        setFilterGenre={setFilterGenre}
+      />
+    )
+  })
+
   return (
     <div className="App">
       <div className="App-div">
-        <FilterDropdown type="state" restaurants={restaurants} setDisplayRestaurants={setDisplayRestaurants} setFilterState={setFilterState} />
-        <FilterDropdown type="genre" restaurants={restaurants} setDisplayRestaurants={setDisplayRestaurants} setFilterGenre={setFilterGenre} />
+        {dropDownRender}
         <TableDisplay restaurants={displayRestaurants} />
       </div>
     </div>
