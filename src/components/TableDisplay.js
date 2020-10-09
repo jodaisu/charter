@@ -7,9 +7,27 @@ const TableDisplay = (props) => {
       (set => a => isUnion === set.has(a.name))(new Set(list2.map(b => b.name)))
     );
 
-  const array = filterRestaurants(props.filterState, props.filterGenre)
+  const filterSearch = () => {
+    const query = props.query.toLowerCase()
+    return renderArray.filter((item) => {
+      // check if name, city, and genre matches query
+      const name = item.name.toLowerCase()
+      const city = item.city.toLowerCase()
+      const genreArray = item.genre.toLowerCase().split(',')
 
-  array.sort((a, b) => {
+      if (name === query || city === query) return true
+      if (genreArray.includes(query)) return true
+      return false
+    })
+
+  }
+  // filter the array based on states and genre
+  let renderArray = filterRestaurants(props.filterState, props.filterGenre)
+
+  // filter the array based on search query if present
+  renderArray = props.query.length > 1 ? filterSearch() : renderArray
+
+  renderArray.sort((a, b) => {
     let nameA = a.name.toUpperCase()
     let nameB = b.name.toUpperCase()
     if (nameA < nameB) {
@@ -23,7 +41,7 @@ const TableDisplay = (props) => {
 
   const restaurantRows = []
 
-  array.forEach((restaurant, i) => {
+  renderArray.forEach((restaurant, i) => {
     restaurantRows.push(
       <tr key={`row${i}`}>
         <td>{restaurant.name}</td>

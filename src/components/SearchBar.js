@@ -20,6 +20,11 @@ const SearchBar = (props) => {
     }
   }
 
+  const handleClear = () => {
+    props.setQuery('')
+    refInput.current.value = ''
+  }
+
   return (
     <span className="searchBar">
       <input
@@ -30,6 +35,7 @@ const SearchBar = (props) => {
       >
       </input>
       <button type="button" onClick={handleSubmit}>Search</button>
+      <button type="button" onClick={handleClear}>Clear</button>
     </span>
   )
 }
