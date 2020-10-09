@@ -2,12 +2,12 @@ import React from 'react'
 
 const TableDisplay = (props) => {
 
-  const filter = (list1, list2, isUnion = true) =>
+  const filterRestaurants = (list1, list2, isUnion = true) =>
     list1.filter(
       (set => a => isUnion === set.has(a.name))(new Set(list2.map(b => b.name)))
     );
 
-  const array = filter(props.filterState, props.filterGenre)
+  const array = filterRestaurants(props.filterState, props.filterGenre)
 
   array.sort((a, b) => {
     let nameA = a.name.toUpperCase()

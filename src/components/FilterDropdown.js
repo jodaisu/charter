@@ -3,24 +3,24 @@ import React from 'react'
 const FilterDropdown = (props) => {
   const onChangeFilter = props.type === 'state' ? props.setFilterState : props.setFilterGenre
 
-  const obj = {}
+  const filterObj = {}
 
   const handleOption = (e) => {
     if (e.currentTarget.value === 'all') {
       onChangeFilter(props.restaurants)
     }
     else {
-      onChangeFilter(obj[e.currentTarget.value])
+      onChangeFilter(filterObj[e.currentTarget.value])
     }
   }
 
   if (props.type === 'state') {
     props.restaurants.forEach(restaurant => {
-      if (obj[restaurant.state]) {
-        obj[restaurant.state].push(restaurant)
+      if (filterObj[restaurant.state]) {
+        filterObj[restaurant.state].push(restaurant)
       }
       else {
-        obj[restaurant.state] = [restaurant]
+        filterObj[restaurant.state] = [restaurant]
       }
     })
   }
@@ -28,17 +28,17 @@ const FilterDropdown = (props) => {
     props.restaurants.forEach(restaurant => {
       const splitArr = restaurant.genre.split(',')
       for (let genre of splitArr) {
-        if (obj[genre]) {
-          obj[genre].push(restaurant)
+        if (filterObj[genre]) {
+          filterObj[genre].push(restaurant)
         }
         else {
-          obj[genre] = [restaurant]
+          filterObj[genre] = [restaurant]
         }
       }
     })
   }
 
-  const options = Object.keys(obj)
+  const options = Object.keys(filterObj)
 
   options.sort((a, b) => {
     if (a < b) {
