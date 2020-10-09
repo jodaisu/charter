@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 const SearchBar = (props) => {
   const [input, setInput] = useState('')
+  const refInput = useRef()
 
   const handleInputChange = (e) => {
     setInput(e.target.value)
   }
 
   const handleSubmit = (e) => {
-    console.log(input)
     props.setQuery(input)
   }
 
@@ -16,6 +16,7 @@ const SearchBar = (props) => {
     if (e.keyCode === 13) {
       e.preventDefault()
       handleSubmit()
+      refInput.current.blur()
     }
   }
 
@@ -23,6 +24,7 @@ const SearchBar = (props) => {
     <span className="searchBar">
       <input
         type="text"
+        ref={refInput}
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       >
