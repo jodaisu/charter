@@ -2,6 +2,8 @@ import React from 'react'
 
 const FilterDropdown = (props) => {
   const onChangeFilter = props.type === 'state' ? props.setFilterState : props.setFilterGenre
+  const toggleCheck = props.type === 'state' ? props.setStateOn : props.setGenreOn
+  const isChecked = props.type === 'state' ? props.stateOn : props.genreOn
 
   const filterObj = {}
 
@@ -12,6 +14,10 @@ const FilterDropdown = (props) => {
     else {
       onChangeFilter(filterObj[e.currentTarget.value])
     }
+  }
+
+  const handleCheck = () => {
+    isChecked ? toggleCheck(false) : toggleCheck(true)
   }
 
   if (props.type === 'state') {
@@ -57,10 +63,13 @@ const FilterDropdown = (props) => {
   })
 
   return (
-    <select className="FilterDropdown" onChange={handleOption}>
-      <option value="all">All</option>
-      {renderOptions}
-    </select>
+    <>
+      <select className="FilterDropdown" onChange={handleOption} disabled={!isChecked}>
+        <option value="all">All</option>
+        {renderOptions}
+      </select>
+      <input checked={isChecked} type="checkbox" onChange={handleCheck}></input>
+    </>
   )
 }
 

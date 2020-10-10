@@ -1,6 +1,8 @@
 import React from 'react'
 
 const TableDisplay = (props) => {
+  const states = props.stateOn ? props.filterState : props.allRestaurants
+  const genres = props.genreOn ? props.filterGenre : props.allRestaurants
 
   const filterRestaurants = (list1, list2, isUnion = true) =>
     list1.filter(
@@ -22,7 +24,7 @@ const TableDisplay = (props) => {
 
   }
   // filter the array based on states and genre
-  let renderArray = filterRestaurants(props.filterState, props.filterGenre)
+  let renderArray = filterRestaurants(states, genres)
 
   // filter the array based on search query if present
   renderArray = props.query.length > 1 ? filterSearch() : renderArray
