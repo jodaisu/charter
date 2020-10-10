@@ -40,7 +40,7 @@ const App = () => {
     }
     else title = 'Genre'
     return (
-      <span>
+      <span key={`filter${type}`}>
         {title}:
         <FilterDropdown
           key={`${type}-${idx}`}
