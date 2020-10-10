@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import Pagination from './Pagination'
 
 const TableDisplay = (props) => {
-  const [currentPage, setCurrentPage] = useState(1)
-  const [restaurantsPerPage, setRestaurantsPerPage] = useState(10)
 
   const states = props.stateOn ? props.filterState : props.allRestaurants
   const genres = props.genreOn ? props.filterGenre : props.allRestaurants
@@ -59,11 +57,11 @@ const TableDisplay = (props) => {
     )
   })
 
-  const indexOfLastRestaurant = currentPage * restaurantsPerPage
-  const indexOfFirstPost = indexOfLastRestaurant - restaurantsPerPage
+  const indexOfLastRestaurant = props.currentPage * props.restaurantsPerPage
+  const indexOfFirstPost = indexOfLastRestaurant - props.restaurantsPerPage
   const currentRestaurants = restaurantRows.slice(indexOfFirstPost, indexOfLastRestaurant)
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  const paginate = (pageNumber) => props.setCurrentPage(pageNumber)
 
   return (
     <>
@@ -92,9 +90,12 @@ const TableDisplay = (props) => {
           </div>
         : null}
       <Pagination
-        restaurantsPerPage={restaurantsPerPage}
+        restaurantsPerPage={props.restaurantsPerPage}
         totalRestaurants={restaurantRows.length}
-        paginate={paginate} />
+        paginate={paginate}
+        currentPage={props.currentPage}
+        currentRestaurants={currentRestaurants.length}
+      />
     </>
   )
 }

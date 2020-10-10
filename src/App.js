@@ -14,6 +14,9 @@ const App = () => {
   const [stateOn, setStateOn] = useState(true)
   const [genreOn, setGenreOn] = useState(true)
   const [loading, setLoading] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [restaurantsPerPage, setRestaurantsPerPage] = useState(10)
+
 
   const [query, setQuery] = useState('')
 
@@ -59,6 +62,7 @@ const App = () => {
           setStateOn={setStateOn}
           genreOn={genreOn}
           setGenreOn={setGenreOn}
+          setCurrentPage={setCurrentPage}
         />
       </span>
     )
@@ -67,7 +71,7 @@ const App = () => {
   return (
     <div className="App">
       <div className="App-div">
-        <SearchBar setQuery={setQuery} />
+        <SearchBar setQuery={setQuery} setCurrentPage={setCurrentPage} />
         <div>Filters:</div>
         {dropdownRender}
         <TableDisplay
@@ -78,6 +82,9 @@ const App = () => {
           stateOn={stateOn}
           genreOn={genreOn}
           loading={loading}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          restaurantsPerPage={restaurantsPerPage}
         />
       </div>
     </div>

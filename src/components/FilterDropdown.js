@@ -8,6 +8,7 @@ const FilterDropdown = (props) => {
   const filterObj = {}
 
   const handleOption = (e) => {
+    props.setCurrentPage(1)
     if (e.currentTarget.value === 'all') {
       onChangeFilter(props.restaurants)
     }
@@ -17,6 +18,7 @@ const FilterDropdown = (props) => {
   }
 
   const handleCheck = () => {
+    props.setCurrentPage(1)
     isChecked ? toggleCheck(false) : toggleCheck(true)
   }
 

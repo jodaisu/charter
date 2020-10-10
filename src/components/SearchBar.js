@@ -14,6 +14,7 @@ const SearchBar = (props) => {
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
+      props.setCurrentPage(1)
       e.preventDefault()
       handleSubmit()
       refInput.current.blur()
