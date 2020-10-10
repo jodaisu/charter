@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Pagination from './Pagination'
 
 const TableDisplay = (props) => {
+  const [currentPage, setCurrentPage] = useState(1)
+  const [restaurantsPerPage, setRestaurantsPerPage] = useState(10)
+
   const states = props.stateOn ? props.filterState : props.allRestaurants
   const genres = props.genreOn ? props.filterGenre : props.allRestaurants
 
@@ -55,26 +59,43 @@ const TableDisplay = (props) => {
     )
   })
 
+  const indexOfLastRestaurant = currentPage * restaurantsPerPage
+  const indexOfFirstPost = indexOfLastRestaurant - restaurantsPerPage
+  const currentRestaurants = restaurantRows.slice(indexOfFirstPost, indexOfLastRestaurant)
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   return (
-    <table className="table">
-      <thead>
-        <tr className="columnName">
-          <th>Name</th>
-          <th>City</th>
-          <th>State</th>
-          <th>Telephone</th>
-          <th>Genres</th>
-        </tr>
-      </thead>
-      <tbody>
-        {restaurantRows.length == 0 ?
-          <div className="noResults">
-            No results were found.
+    <>
+      <table className="table">
+        <thead>
+          <tr className="columnName">
+            <th>Name</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Telephone</th>
+            <th>Genres</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentRestaurants}
+        </tbody>
+      </table>
+      {props.loading == true ?
+        <div className="loading">
+          Loading...
           </div>
-          : null}
-        {restaurantRows}
-      </tbody>
-    </table>
+        : null}
+      {restaurantRows.length == 0 && props.loading == false ?
+        <div className="noResults">
+          No results were found.
+          </div>
+        : null}
+      <Pagination
+        restaurantsPerPage={restaurantsPerPage}
+        totalRestaurants={restaurantRows.length}
+        paginate={paginate} />
+    </>
   )
 }
 
