@@ -13,22 +13,28 @@ const App = () => {
   const [filterGenre, setFilterGenre] = useState([])
   const [stateOn, setStateOn] = useState(true)
   const [genreOn, setGenreOn] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   const [query, setQuery] = useState('')
 
   useEffect(() => {
-    fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
-      headers: {
-        Authorization: 'Api-Key q3MNxtfep8Gt',
-      },
-    })
-      .then(data => data.json())
-      .then(result => {
-        setRestaurants(result)
-        setDisplayRestaurants(result)
-        setFilterState(result)
-        setFilterGenre(result)
+    const fetchRestaurants = async () => {
+      setLoading(true)
+      fetch('https://code-challenge.spectrumtoolbox.com/api/restaurants', {
+        headers: {
+          Authorization: 'Api-Key q3MNxtfep8Gt',
+        },
       })
+        .then(data => data.json())
+        .then(result => {
+          setLoading(false)
+          setRestaurants(result)
+          setDisplayRestaurants(result)
+          setFilterState(result)
+          setFilterGenre(result)
+        })
+    }
+    fetchRestaurants()
   }, [])
 
   const filterType = ['state', 'genre']
@@ -71,6 +77,7 @@ const App = () => {
           query={query}
           stateOn={stateOn}
           genreOn={genreOn}
+          loading={loading}
         />
       </div>
     </div>
