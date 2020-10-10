@@ -56,15 +56,22 @@ const TableDisplay = (props) => {
   })
 
   return (
-    <table>
-      <tbody className="table">
+    <table className="table">
+      <thead>
         <tr className="columnName">
-          <td>Name</td>
-          <td>City</td>
-          <td>State</td>
-          <td>Telephone</td>
-          <td>Genres</td>
+          <th>Name</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Telephone</th>
+          <th>Genres</th>
         </tr>
+      </thead>
+      <tbody>
+        {restaurantRows.length == 0 ?
+          <div className="noResults">
+            No results were found.
+          </div>
+          : null}
         {restaurantRows}
       </tbody>
     </table>
