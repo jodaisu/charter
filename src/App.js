@@ -5,6 +5,7 @@ import './App.css';
 import SearchBar from './components/SearchBar'
 import TableDisplay from './components/TableDisplay'
 import FilterDropdown from './components/FilterDropdown'
+import Sort from './components/Sort'
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([])
@@ -16,6 +17,7 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [restaurantsPerPage, setRestaurantsPerPage] = useState(10)
+  const [sort, setSort] = useState('name')
 
 
   const [query, setQuery] = useState('')
@@ -76,6 +78,7 @@ const App = () => {
         <span className="filterTitle">Filter by
         {dropdownRender}
         </span>
+        <Sort setSort={setSort} />
         <TableDisplay
           allRestaurants={displayRestaurants}
           filterState={filterState}
@@ -87,6 +90,7 @@ const App = () => {
           setCurrentPage={setCurrentPage}
           currentPage={currentPage}
           restaurantsPerPage={restaurantsPerPage}
+          sort={sort}
         />
       </div>
     </div>

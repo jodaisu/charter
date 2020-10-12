@@ -66,7 +66,7 @@ const FilterDropdown = (props) => {
 
   return (
     <>
-      <select className="FilterDropdown" onChange={handleOption} disabled={!isChecked}>
+      <select className="dropdown" onChange={handleOption} disabled={!isChecked}>
         <option value="all">All</option>
         {renderOptions}
       </select>

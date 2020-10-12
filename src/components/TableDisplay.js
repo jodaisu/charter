@@ -3,6 +3,8 @@ import Pagination from './Pagination'
 
 const TableDisplay = (props) => {
 
+  const sortType = props.sort
+
   const states = props.stateOn ? props.filterState : props.allRestaurants
   const genres = props.genreOn ? props.filterGenre : props.allRestaurants
 
@@ -41,9 +43,11 @@ const TableDisplay = (props) => {
   // filter the array based on search query if present
   renderArray = props.query.length > 1 ? filterSearch() : renderArray
 
+
+  // sort
   renderArray.sort((a, b) => {
-    let nameA = a.name.toUpperCase()
-    let nameB = b.name.toUpperCase()
+    let nameA = a[sortType].toUpperCase()
+    let nameB = b[sortType].toUpperCase()
     if (nameA < nameB) {
       return -1
     }

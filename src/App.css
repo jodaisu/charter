@@ -42,7 +42,7 @@ ul li a:hover:not(.active) {
 }
 
 .filter {
-  margin: 12px;
+  margin: 10px;
   font-size: 18px
 }
 
@@ -65,10 +65,6 @@ ul li a:hover:not(.active) {
   opacity: 1;
 }
 
-.spacer {
-  margin-left: 70px;
-}
-
 .buttons {
   margin: 2px;
 }
@@ -76,4 +72,13 @@ ul li a:hover:not(.active) {
 .search {
   margin-right: 3px;
   width: 250px;
+}
+
+.sort {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.dropdown {
+  margin-left: 10px;
 }
