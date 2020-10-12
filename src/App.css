@@ -40,3 +40,40 @@ a {
 ul li a:hover:not(.active) {
   background-color: #61dafb;
 }
+
+.filter {
+  margin: 12px;
+  font-size: 18px
+}
+
+.filterTitle {
+  font-size: 18px;
+}
+
+.table {
+  margin: 20px;
+  min-height: 100px;
+}
+
+.searchBar {
+  margin: 30px;
+}
+
+.pagination {
+  bottom:0%;
+  width:100%; 
+  opacity: 1;
+}
+
+.spacer {
+  margin-left: 70px;
+}
+
+.buttons {
+  margin: 2px;
+}
+
+.search {
+  margin-right: 3px;
+  width: 250px;
+}

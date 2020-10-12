@@ -70,7 +70,7 @@ const FilterDropdown = (props) => {
         <option value="all">All</option>
         {renderOptions}
       </select>
-      <input checked={isChecked} type="checkbox" onChange={handleCheck}></input>
+      <input className="filterCheck" checked={isChecked} type="checkbox" onChange={handleCheck}></input>
     </>
   )
 }

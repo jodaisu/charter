@@ -49,7 +49,7 @@ const App = () => {
     }
     else title = 'Genre'
     return (
-      <span key={`filter${type}`}>
+      <span className="filter" key={`filter${type}`}>
         {title}:
         <FilterDropdown
           key={`${type}-${idx}`}
@@ -72,8 +72,10 @@ const App = () => {
     <div className="App">
       <div className="App-div">
         <SearchBar setQuery={setQuery} setCurrentPage={setCurrentPage} />
-        <div>Filters:</div>
+        <span className="spacer"></span>
+        <span className="filterTitle">Filter by
         {dropdownRender}
+        </span>
         <TableDisplay
           allRestaurants={displayRestaurants}
           filterState={filterState}
