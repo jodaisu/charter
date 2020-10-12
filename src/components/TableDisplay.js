@@ -13,13 +13,23 @@ const TableDisplay = (props) => {
 
   const filterSearch = () => {
     const query = props.query.toLowerCase()
+    const queryArray = props.query.toLowerCase().split(' ')
     return renderArray.filter((item) => {
       // check if name, city, and genre matches query
       const name = item.name.toLowerCase()
+      const nameArray = item.name.toLowerCase().split(' ')
+
       const city = item.city.toLowerCase()
       const genreArray = item.genre.toLowerCase().split(',')
-
+      if (queryArray.length > 1) {
+        for (let query of queryArray) {
+          if (nameArray.includes(query)) {
+            return true
+          }
+        }
+      }
       if (name === query || city === query) return true
+      if (nameArray.includes(query)) return true
       if (genreArray.includes(query)) return true
       return false
     })
@@ -63,6 +73,15 @@ const TableDisplay = (props) => {
 
   const paginate = (pageNumber) => props.setCurrentPage(pageNumber)
 
+  const paginateLeft = () => {
+    if (props.currentPage - 1 == 0) return
+    return props.setCurrentPage(props.currentPage - 1)
+  }
+  const paginateRight = (numberOfPages) => {
+    if (props.currentPage + 1 > numberOfPages) return
+    return props.setCurrentPage(props.currentPage + 1)
+  }
+
   return (
     <>
       <table className="table">
@@ -95,6 +114,8 @@ const TableDisplay = (props) => {
         paginate={paginate}
         currentPage={props.currentPage}
         currentRestaurants={currentRestaurants.length}
+        paginateLeft={paginateLeft}
+        paginateRight={paginateRight}
       />
     </>
   )
