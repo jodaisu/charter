@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Pagination = ({ restaurantsPerPage, totalRestaurants, paginate }) => {
+const Pagination = ({ restaurantsPerPage, totalRestaurants, paginate, paginateLeft, paginateRight }) => {
   const pageNumbers = []
 
   for (let i = 1; i <= Math.ceil(totalRestaurants / restaurantsPerPage); i++) {
@@ -10,6 +10,11 @@ const Pagination = ({ restaurantsPerPage, totalRestaurants, paginate }) => {
   return (
     <div>
       <ul className="pagination">
+        <li>
+          <a onClick={paginateLeft} href="!#" className="leftArrow">
+            &lt;
+          </a>
+        </li>
         {pageNumbers.map(number => {
           return (
             <li key={`page${number}`} className="pageItem">
@@ -19,6 +24,11 @@ const Pagination = ({ restaurantsPerPage, totalRestaurants, paginate }) => {
             </li>
           )
         })}
+        <li>
+          <a onClick={() => paginateRight(pageNumbers.length)} href="!#" className="leftArrow">
+            &gt;
+          </a>
+        </li>
       </ul>
     </div>
   )
