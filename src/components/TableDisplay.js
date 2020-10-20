@@ -60,15 +60,27 @@ const TableDisplay = (props) => {
   const restaurantRows = []
 
   renderArray.forEach((restaurant, i) => {
-    restaurantRows.push(
-      <tr key={`row${i}`}>
-        <td>{restaurant.name}</td>
-        <td>{restaurant.city}</td>
-        <td>{restaurant.state}</td>
-        <td>{restaurant.telephone}</td>
-        <td>{restaurant.genre}</td>
-      </tr>
-    )
+    if (i % 2 === 0) {
+      restaurantRows.push(
+        <tr key={`row${i}`} className="even">
+          <td className="first">{restaurant.name}</td>
+          <td className="second">{restaurant.city}</td>
+          <td className="third">{restaurant.state}</td>
+          <td className="fourth">{restaurant.telephone}</td>
+          <td className="fifth">{restaurant.genre}</td>
+        </tr>
+      )
+    }
+    else {
+      restaurantRows.push(<tr key={`row${i}`} className="odd">
+        <td className="first">{restaurant.name}</td>
+        <td className="second">{restaurant.city}</td>
+        <td className="third">{restaurant.state}</td>
+        <td className="fourth">{restaurant.telephone}</td>
+        <td className="fifth">{restaurant.genre}</td>
+      </tr>)
+    }
+
   })
 
   const indexOfLastRestaurant = props.currentPage * props.restaurantsPerPage
@@ -91,11 +103,11 @@ const TableDisplay = (props) => {
       <table className="table">
         <thead>
           <tr className="columnName">
-            <th>Name</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Telephone</th>
-            <th>Genres</th>
+            <th className="first">Name</th>
+            <th className="second">City</th>
+            <th className="third">State</th>
+            <th className="fourth">Telephone</th>
+            <th className="fifth">Genres</th>
           </tr>
         </thead>
         <tbody>

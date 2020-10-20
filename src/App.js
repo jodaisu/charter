@@ -77,8 +77,9 @@ const App = () => {
         <span className="spacer"></span>
         <span className="filterTitle">Filter by
         {dropdownRender}
+          <Sort setSort={setSort} />
         </span>
-        <Sort setSort={setSort} />
+
         <TableDisplay
           allRestaurants={displayRestaurants}
           filterState={filterState}

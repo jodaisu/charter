@@ -3,14 +3,14 @@
 }
 
 .App-div {
-  background-color: #282c34;
+  background-color: rgb(196, 210, 241);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(2px + 2vmin);
-  color: white;
+  font-size: calc(2px + 1.8vmin);
+  color: rgb(80,80,80);
 }
 
 .App-link {
@@ -31,19 +31,19 @@ ul li {
 }
 
 a {
-  color: white;
+  color: rgb(41, 41, 41);
   float: left;
   padding: 8px 16px;
   text-decoration: none;
-}
+}t
 
 ul li a:hover:not(.active) {
-  background-color: #61dafb;
+  background-color: #00546b;
 }
 
 .filter {
   margin: 10px;
-  font-size: 18px
+  font-size: 16px
 }
 
 .filterTitle {
@@ -52,33 +52,97 @@ ul li a:hover:not(.active) {
 
 .table {
   margin: 20px;
-  min-height: 100px;
+  min-height: 40vh;
+  table-layout: fixed;
+  width: 145vh;
+  max-height: 60vw;
+  background-color: rgb(249,249,249);
+  border-radius: 5px;
 }
 
+table, th {
+  padding-bottom: 2vh;
+}
+
+th {
+  color:rgba(128, 128, 128, 0.89);
+}
 .searchBar {
-  margin: 30px;
+  margin: 10px;
 }
 
 .pagination {
   bottom:0%;
   width:100%; 
-  opacity: 1;
+  opacity: 3;
 }
 
 .buttons {
   margin: 2px;
+  border-style: solid 1px;
+  background-color: rgba(206, 206, 206, 0.89);
+  border: 0;
+  color: #7a7a7a;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+
 }
 
 .search {
   margin-right: 3px;
-  width: 250px;
+  border: 0;
 }
 
 .sort {
-  font-size: 18px;
-  margin-top: 15px;
+  font-size: 15px;
+  margin-left: 40px;
 }
 
 .dropdown {
   margin-left: 10px;
+  border: 0;
+  color: #7a7a7a;
+}
+
+.first {
+  text-align: left;
+  padding-right: 3.5vh;
+  padding-bottom: 0.5vh;
+  width: 40vh;
+}
+
+.fourth {
+  width: 20vh;
+  padding-right: 2vh;
+  padding-left: 7vh;
+
+}
+
+.fifth {
+  font-size: 1.9vh;
+  text-align: left;
+  padding-right: 2vh;
+  width: 50vh;
+  padding-left: 2vh;
+}
+
+.second {
+  text-align: left;
+  padding-right: 2vh;
+  width: 20vh;
+}
+
+.even {
+  width: 40vh;
+  background-color: rgb(237, 237, 237);
+}
+
+.third {
+  text-align: left;
+  padding-right: 5vh;
+}
+
+.filterTitle {
+  font-size: 16px;
 }
