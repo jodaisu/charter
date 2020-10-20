@@ -9,12 +9,13 @@ const SearchBar = (props) => {
   }
 
   const handleSubmit = (e) => {
+    props.setCurrentPage(1)
     props.setQuery(input)
   }
 
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
-      props.setCurrentPage(1)
+
       e.preventDefault()
       handleSubmit()
       refInput.current.blur()
