@@ -38,7 +38,7 @@ const SearchBar = (props) => {
       >
       </input>
       <button className="buttons" type="button" onClick={handleSubmit}>Search</button>
-      <button className="buttons" type="button" onClick={handleClear}>Clear</button>
+      <button className="buttonClear" type="button" onClick={handleClear}>Clear</button>
     </span>
   )
 }

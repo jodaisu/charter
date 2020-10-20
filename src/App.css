@@ -3,7 +3,7 @@
 }
 
 .App-div {
-  background-color: rgb(196, 210, 241);
+  background-color: rgb(216, 216, 216);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
 }
 
 ul li a.active {
-  color: white;
+  color: wite;
 }
 
 ul li {
@@ -74,19 +74,30 @@ th {
 .pagination {
   bottom:0%;
   width:100%; 
-  opacity: 3;
 }
 
 .buttons {
   margin: 2px;
   border-style: solid 1px;
-  background-color: rgba(206, 206, 206, 0.89);
+  background-color: rgb(92, 135, 253);
   border: 0;
-  color: #7a7a7a;
-  font-weight: 600;
+  color: #f1f1f1;
+  font-weight: 550;
   line-height: 1.5;
   margin-top: 1.5rem;
+  border-radius: 10%;
+}
 
+.buttonClear {
+  margin: 2px;
+  border-style: solid 1px;
+  background-color: rgb(238, 137, 137);
+  border: 0;
+  color: #ffffff;
+  font-weight: 550;
+  line-height: 1.5;
+  margin-top: 1.5rem;
+  border-radius: 10%;
 }
 
 .search {
@@ -145,4 +156,9 @@ th {
 
 .filterTitle {
   font-size: 16px;
+}
+
+.filterCheck {
+  width: 15px;
+  height: 15px;
 }
