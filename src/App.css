@@ -3,7 +3,7 @@
 }
 
 .App-div {
-  background-color: rgb(216, 216, 216);
+  background-color: rgb(249,249,249);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -91,7 +91,7 @@ th {
 .buttonClear {
   margin: 2px;
   border-style: solid 1px;
-  background-color: rgb(238, 137, 137);
+  background-color: rgb(137, 172, 238);
   border: 0;
   color: #ffffff;
   font-weight: 550;
@@ -102,17 +102,20 @@ th {
 
 .search {
   margin-right: 3px;
-  border: 0;
+  border: 1;
+  border-width: 1px;
+  border-style: solid;
+  
 }
 
 .sort {
-  font-size: 15px;
+  font-size: 1.5vh;
   margin-left: 40px;
 }
 
 .dropdown {
   margin-left: 10px;
-  border: 0;
+  border: 1;
   color: #7a7a7a;
 }
 
@@ -156,10 +159,14 @@ th {
 }
 
 .filterTitle {
-  font-size: 16px;
+  font-size: 1.5vh;
 }
 
 .filterCheck {
   width: 15px;
   height: 15px;
+}
+
+.filter {
+  font-size: 1.5vh;
 }
